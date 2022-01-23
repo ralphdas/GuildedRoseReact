@@ -1,46 +1,60 @@
-# Getting Started with Create React App
+# Gildedrose Refactor React App
+
+## Introduction
+
+This assignment consisted out of doing the Gildedrose Refactor in TypeScript and creating a React application using:
+
+- Styled Components
+- React Context API
+- React Hooks API
+
+Before I started I made a simple TODO list to keep track of my progress and for reference.
+
+- [x] Clone repo
+- [x] Setup initial tests (TDD style)
+- [x] Restructure code
+- [x] Create React project
+- [x] Create components
+- [x] Implement context
+- [x] Implement styled components
+- [x] Write these Docs
+
+## Findings/ Remarks
+
+While working on this project I came across some findings/ conclusions which I will outline per development phase
+
+### Test Driven Development
+
+For the refactoring of the Gildedrose code I decided to first write all requirements in Jest unit tests and keep those running (--watch) on the 'legacy' code. I started by first swapping and clearing out code to improve readability. This resulted in my first refactored version. I commented this version out and it's still present in the code base in the file ` src/gilded-rose/gilded-rose.ts`. From this version I created my final version by splitting the code up into different functions per Item Type. I felt this could possibily be enhanced even futher by splitting the files up in to different specialiced classes but I would leave that for a team discussion. Also things like dependecy injection came to mind to facilitate future Item type additions. There where a couple of things I could not refactor due to the requirments/ compatibility with the legacy code.
+
+- The update quality call manipulates the state of the GildedRose container class. In an ideal world I would refactor it to be completly stateless and create a function called `getItemsAtDate(Date)` or `getItemsAtDay(Number)`. Could be wrapped in an Adapter Classes to make it compatible but this would be a team question again.
+- Item types are identified by the very specific name field. Not by an item type property. This is a recipe for disaster.
+- I kept the Item Class as is to facilitate keeping the API consistent. Normally I like to name classes and more predictable and descriptive of it's function or use. So more `ProductItem` and `ProductItemCollection`. I also don't like encapsulating classes with non descriptive names like 'Gildedrose' but more `Store` or `GildedroseStore`
+
+### React
+
+I last touched React in 2017. So I had a bit of a refresh/ learning. I used the Create React App Project to quiclky get going. I really like the functional approach and prefer it from the older more verbose class based one. I really liked working with styled components to setup a simple CSS design not having to worry about things like BEM and SCSS. Also keeping the code together in the components seems like a nice touch. Since I had some learning curve I did not manage to pack a lot of functionality into the demo. Just a `updateQuality` button which uses a Hook to run the `UpdateWuality` function. I used the Context API to transport the GildedRose Items to List class.
+
+## Usage Instructions
+
+To start the project simply clone the project and install the dependencies with
+
+```
+npm install
+```
+
+or using Yarn
+
+```
+yarn
+```
+
+the run `npm run start ` or `yarn start` to locally start the project. After starting the project the default browser should automatically appear pointing to `http://localhost:3000/`
+
+To kick of the Gildedrose test suite run:
+
+```
+npm run test
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
