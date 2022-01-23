@@ -1,11 +1,12 @@
 import React from "react";
+import styled from "styled-components";
 import { ItemContext } from "../context/ItemContext";
 import { ItemListEntryComponent } from "./ItemListEntryComponent";
 
 export default function ItemListComponent() {
   const items = React.useContext(ItemContext);
   return (
-    <ul className="gildenrose__list">
+    <ItemList>
       {items.map((item, index) => {
         return (
           <ItemListEntryComponent
@@ -14,6 +15,11 @@ export default function ItemListComponent() {
           ></ItemListEntryComponent>
         );
       })}
-    </ul>
+    </ItemList>
   );
 }
+
+const ItemList = styled.ul`
+  padding: 0;
+  list-style: none;
+`;

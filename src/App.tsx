@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { ButtonComponent } from "./components/ButtonComponent";
 import ItemListComponent from "./components/ItemListComponent";
 import { ItemContextComponent, useUpdateQuality } from "./context/ItemContext";
@@ -5,15 +6,20 @@ import { ItemContextComponent, useUpdateQuality } from "./context/ItemContext";
 function App() {
   const updateQuality = useUpdateQuality();
   return (
-    <div className="gildenrose__container">
+    <Container>
       <ButtonComponent onClick={updateQuality} className="gildenrose__button">
         Update Quality
       </ButtonComponent>
       <ItemContextComponent>
         <ItemListComponent></ItemListComponent>
       </ItemContextComponent>
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  max-width: 960px;
+  flex: 1;
+`;
 
 export default App;
