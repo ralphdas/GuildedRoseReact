@@ -1,4 +1,3 @@
-import "./App.css";
 import { ButtonComponent } from "./components/ButtonComponent";
 import ItemListComponent from "./components/ItemListComponent";
 import { ItemContextComponent, useUpdateQuality } from "./context/ItemContext";
