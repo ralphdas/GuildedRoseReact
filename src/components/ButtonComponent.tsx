@@ -26,7 +26,14 @@ const Button = styled.button`
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   font-weight: 600;
+  font-size: 1.2rem;
   border: 3px solid #ecf0f1;
   border-radius: 10px;
   margin: 1rem 0;
+  &:hover {
+    background-color: rgb(0 0 0 / 28%);
+  }
+  &:active {
+    background-color: rgb(0 0 0 / 50%);
+  }
 `;
