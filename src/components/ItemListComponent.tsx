@@ -1,7 +1,9 @@
-import { Item } from "../gilded-rose";
+import React from "react";
+import { ItemContext } from "../context/ItemContext";
 import { ItemListEntryComponent } from "./ItemListEntryComponent";
 
-export default function ItemListComponent({ items }: { items: Item[] }) {
+export default function ItemListComponent() {
+  const items = React.useContext(ItemContext);
   return (
     <ul className="gildenrose__list">
       {items.map((item, index) => {

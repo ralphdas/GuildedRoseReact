@@ -1,17 +1,7 @@
-import React, { useState } from "react";
 import "./App.css";
 import { ButtonComponent } from "./components/ButtonComponent";
 import ItemListComponent from "./components/ItemListComponent";
-import initialState from "./state";
-
-// HOOK
-function useUpdateQuality() {
-  const [value, setValue] = useState(initialState.items);
-  return () =>
-    setValue((value) => {
-      return initialState.updateQuality();
-    });
-}
+import { ItemContextComponent, useUpdateQuality } from "./context/ItemContext";
 
 function App() {
   const updateQuality = useUpdateQuality();
@@ -20,7 +10,9 @@ function App() {
       <ButtonComponent onClick={updateQuality} className="gildenrose__button">
         Update Quality
       </ButtonComponent>
-      <ItemListComponent items={initialState.items}></ItemListComponent>
+      <ItemContextComponent>
+        <ItemListComponent></ItemListComponent>
+      </ItemContextComponent>
     </div>
   );
 }
